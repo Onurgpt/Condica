@@ -1,0 +1,16 @@
+workflows:
+  react-native-android:
+    name: Condica Android Build
+    environment:
+      node: latest
+      java: 17
+    scripts:
+      - npm install
+      - npx expo prebuild
+      - cd android && ./gradlew bundleRelease
+    artifacts:
+      - android/app/build/outputs/**/*.aab
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
